@@ -1,5 +1,5 @@
 /**
- * @module(sortArray, input) //array of string , string
+ * @module(Array,number)sortArray,input - sorted array and user input
  * 
  */
 exports.binarySearch = (sortArray, input) => {
