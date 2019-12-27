@@ -1,13 +1,13 @@
 /**
- * @module(couponNumber)//number
+ * @module(number)couponNumber-user input
  */
 exports.toFindCouponNumber = (couponNumber) => {
     try {
         let arr = new Array(10000000); //creating array
         while (true) {
-            let randomCouponNumber = Math.round(Math.random() * 1000000); //Generating random numbers
+            let randomCouponNumber = Math.round(Math.random() * couponNumber); //Generating random numbers
             arr.push(randomCouponNumber); //storing random value into the array
-            if (couponNumber === randomCouponNumber) // checking random number and user entered no are equal
+            if (couponNumber == randomCouponNumber) // checking random number and user entered no are equal
             {
                 break;
             }
