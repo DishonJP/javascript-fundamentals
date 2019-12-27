@@ -1,16 +1,22 @@
 /**
- * Execution   : default node    cmd>node.harmonnicNumber.js
+ * Execution   : default node    cmd>node.harmonicNumber.js
  * 
- * purpose     : To find nth Harmonic Number
+ * purpose     : To find harmonic number
  * 
  * 
- * @description
- * 
+ * @description :Prints the Nth harmonic number: 1/1 + 1/2 + ... + 1/N
  * @file        :harmonicNumber.js
- * @overview    :to generate harmonic number for a given value
- * 
+ * @overview    :find the harmonic number for an given user input
+ * @author      :Dishon <dishonjp11@gmail.com>
+ * @version     :1.0
+ * @since       :20-12-2019
  * */
 let access = require('./harmonicNumberBL');
-let readline=require('readline-sync');
-let nthNo=readline.questionInt('Enter the nth harmonic no');
-access.harmonicNumber(nthNo);
+let readline = require('readline-sync');
+let nthNo = readline.question('Enter the nth harmonic no');
+if (nthNo === '') {
+    console.log('enter valid input');
+
+} else {
+    access.harmonicNumber(nthNo);
+}
