@@ -1,25 +1,25 @@
 /**
- * @module(noOfTimes)//number
+ * @module(number)noOfTimes-user input value
  */
 exports.whoWins = (noOfTimes) => {
     try {
         let player1Balance = 10;
         let player2Balance = 10;
-        let player1WinCount = 0;//to find percentage
+        let player1WinCount = 0; //to find percentage
         let player2WinCount = 0;
-        for (let i = 0; i < noOfTimes; i++) {//looping till user value
-            let whoStart = Math.round(Math.random());//to find whole number
-            while (true) {//to run infinite times
-                if (whoStart === 0) {//to find which player will start the game
+        for (let i = 0; i < noOfTimes; i++) { //looping till user value
+            let whoStart = Math.round(Math.random()); //to find whole number
+            while (true) { //to run infinite times
+                if (whoStart === 0) { //to find which player will start the game
                     console.log('player 1 Starts the gramble');
                     let player1 = Math.round(Math.random());
-                    if (player1 === 0) {//player is betting
-                        if (player1Balance > 0) {//checking balance
-                            player1Balance--;//reducing balance by 1
+                    if (player1 === 0) { //player is betting
+                        if (player1Balance > 0) { //checking balance
+                            player1Balance--; //reducing balance by 1
                         } else {
                             console.log('player 1 run out of balance, So player 2 wins');
-                            player2WinCount++;//counting if player wins
-                            break;//breaking infinte loop
+                            player2WinCount++; //counting if player wins
+                            break; //breaking infinte loop
                         }
                     } else {
                         console.log('player 1 give up, So player 2 wins');
@@ -45,10 +45,10 @@ exports.whoWins = (noOfTimes) => {
                 }
             }
         }
-        if (player1WinCount > player2WinCount) {//to check which player which player has more win count
-            return (player1WinCount / noOfTimes) * 100 + '%';//to find percentage
+        if (player1WinCount > player2WinCount) { //to check which player which player has more win count
+            return 'Player 1 wins by ' + (player1WinCount / noOfTimes) * 100 + '%'; //to find percentage
         } else if (player1WinCount < player2WinCount) {
-            return (player2WinCount / noOfTimes) * 100 + '%';
+            return 'Player 2 wins by ' + (player2WinCount / noOfTimes) * 100 + '%';
         } else {
             return 'draw';
         }
