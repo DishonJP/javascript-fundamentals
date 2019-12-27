@@ -1,31 +1,29 @@
-const readline=require('readline-sync');
-exports.initializeValue=(arr)=>{
-   try {
-    for (let i = 0; i < arr.length; i++) {
-        arr[i]=readline.questionInt('enter the value for index '+i+' : ');  
+/**
+ * @module(Array)arr - created array using user given size
+ */
+const readline = require('readline-sync');
+exports.initializeValue = (arr) => {
+    try {
+        for (let i = 0; i < arr.length; i++) { //to iterate every index of array
+            arr[i] = readline.questionInt('enter the value for index ' + i + ' : '); // get value from user for specified index
+        }
+        return arr; //returing array
+    } catch (error) {
+        console.log(error);
     }
-    return arr;
-   } catch (error) {
-       console.log(error);
-   }
 }
-exports.distinctTriples=(arr)=>{
+/**
+ * @module(Array)arr - array with values
+ */
+exports.distinctTriples = (arr) => {
     try {
         for (let i = 0; i < arr.length; i++) {
-            for (let j = 1; j < arr.length; j++) {
-                for (let k = 2; k < arr.length; k++) {
-                    if(arr[i]+arr[j]+arr[k]===0) {
-                        console.log(arr[i],arr[j],arr[k],' are distinct triples');
-                        
-                    }
-                    
-                }
-                
+            if (arr[i] + arr[i + 1] + arr[i + 2] === 0) { //checking distinct triplets
+                console.log(arr[i], arr[i + 1], arr[i + 2], ' are distinct triples');
             }
-            
         }
     } catch (error) {
         console.log(error);
-        
+
     }
 }
