@@ -238,14 +238,13 @@ exports.displayArray = (intialArray) => {
     }
 }
 /*****************************************************************************************************/
-
+const readline = require('readline-sync');
 exports.initializeValue = (arr) => {
-    const readline = require('readline-sync');
     try {
-        for (let i = 0; i < arr.length; i++) {
-            arr[i] = readline.questionInt('enter the value for index ' + i + ' : ');
+        for (let i = 0; i < arr.length; i++) { //to iterate every index of array
+            arr[i] = readline.questionInt('enter the value for index ' + i + ' : '); // get value from user for specified index
         }
-        return arr;
+        return arr; //returing array
     } catch (error) {
         console.log(error);
     }
@@ -253,17 +252,9 @@ exports.initializeValue = (arr) => {
 exports.distinctTriples = (arr) => {
     try {
         for (let i = 0; i < arr.length; i++) {
-            for (let j = 1; j < arr.length; j++) {
-                for (let k = 2; k < arr.length; k++) {
-                    if (arr[i] + arr[j] + arr[k] === 0) {
-                        console.log(arr[i], arr[j], arr[k], ' are distinct triples');
-
-                    }
-
-                }
-
+            if (arr[i] + arr[i + 1] + arr[i + 2] === 0) { //checking distinct triplets
+                console.log(arr[i], arr[i + 1], arr[i + 2], ' are distinct triples');
             }
-
         }
     } catch (error) {
         console.log(error);
@@ -581,3 +572,26 @@ exports.toFindAnagram = (n) => {
     }
 }
 /****************************************************************************************************/
+exports.binarySearch = (sortArray, input) => {
+    try {
+        let front = 0, //to pointing to first index
+            end = sortArray.length - 1; //to pointing to last index
+        let mid = Math.floor((front + end) / 2); //to pointing to middle index
+        console.log(sortArray);
+        while (front <= end && sortArray[mid] != input) { //to check the string is present in that specific index
+            if (input < sortArray[mid]) { //to check whether the value is present left from mid index
+                end = mid - 1;
+            } else {
+                front = mid + 1;
+            }
+            mid = Math.floor((front + end) / 2);
+        }
+        console.log(mid);
+        return (sortArray[mid] != input) ? -1 : mid + 1; //to check whether the word is present or not
+    } catch (error) {
+        console.log(error);
+
+    }
+
+}
+/***********************************************************************************/
