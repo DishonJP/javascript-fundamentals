@@ -12,6 +12,5 @@
  * @since       :27-12-2019
  * */
 const access = require('./insertionSortBL');
-let arrString = ['dishon', 'is', 'getting', 'bored'];
-console.log('Before insertion sort ' + arrString);
-access.toSortString(arrString);
+let arr = ['dishon', 'is', 'getting', 'bored'];
+access.toInsertionSort(arr);
