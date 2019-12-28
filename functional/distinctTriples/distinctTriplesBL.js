@@ -14,7 +14,8 @@ exports.initializeValue = (arr) => {
     }
 }
 /**
- * @module(Array)arr - array with values
+ * @module distinctTriples
+ * @param {Array} arr - array with values
  */
 exports.distinctTriples = (arr) => {
     try {
