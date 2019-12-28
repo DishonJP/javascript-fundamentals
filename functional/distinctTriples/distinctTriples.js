@@ -13,7 +13,7 @@
  * */
 const readline = require('readline-sync');
 const access = require('./distinctTriplesBL');
-let size = readline.question('Enter how many values do u want :');
+let size = readline.question('Enter how many valuess do u want :');
 if (size === '') {
     console.log('Give valid input');
 } else {
