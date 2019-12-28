@@ -1,5 +1,6 @@
 /**
- * @module(Array)arr - created array using user given size
+ * @module initializeValue
+ * @param {Array} arr - created array using user given size
  */
 const readline = require('readline-sync');
 exports.initializeValue = (arr) => {
