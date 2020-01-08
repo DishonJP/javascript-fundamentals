@@ -1,3 +1,4 @@
 const access = require('./primeNumberBL');
-let arr = [10][100];
+let arr = new Array(10);
+console.log(arr);
 access.toFindPrime(arr);

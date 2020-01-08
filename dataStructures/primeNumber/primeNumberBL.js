@@ -9,13 +9,22 @@ exports.toFindPrime = (arr) => {
         }
         return true;
     }
-    for (let i = 0; i <= 1000; i++) {
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = new Array(100);
+    }
+    let j = 0;
+    let k = 0;
+    for (let i = 2; i <= 1000; i++) {
+        if (i % 100 === 0) {
+            k = 0;
+            j++;
+        }
         let result = isPrime(i);
-        if (result) {
-            let j = 0;
-            if (i % 100 === 0) {
-                j++;
-            }
+        if (result) {    
+            arr[j][k] = i;
+            k++;
         }
     }
+    console.log(arr);
+
 }
