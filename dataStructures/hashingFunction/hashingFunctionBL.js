@@ -11,5 +11,14 @@ exports.hashingFunction = (data) => {
             this.bucket[index].push([key, value]);
             return index;
         }
+        get(key) {
+            let index = this.key(key);
+            if (!this.bucket[index]) return null;
+            for (let bucket of this.bucket[index]) {
+                if (bucket[0]===key) {
+                    return bucket[1];
+                }
+            }
+        }
     }
 }
