@@ -1,24 +1,25 @@
 exports.hashingFunction = (data) => {
     class HashTable {
         constructor() {
-            this.bucket = new Array(11);
+            this.buckets = new Array(11);
         }
-        key(data) {
+        hash(data) {
             return data % 11;
         }
         set(key, value) {
-            let index = this.key(key);
-            this.bucket[index].push([key, value]);
-            return index;
+            let index = this.hash(key);
+            this.buckets[index] = value;
         }
         get(key) {
-            let index = this.key(key);
-            if (!this.bucket[index]) return null;
-            for (let bucket of this.bucket[index]) {
-                if (bucket[0]===key) {
-                    return bucket[1];
-                }
-            }
+            const index = this.hash(key);
+            return this.buckets[index];
         }
     }
+    let hashTable = new HashTable();
+    let i = 0;
+    while (i < data.length) {
+        hashTable.set(data[i], data[i]);
+        i++;
+    }
+    console.log(hashTable.get(4));
 }
