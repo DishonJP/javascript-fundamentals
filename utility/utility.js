@@ -595,3 +595,188 @@ exports.binarySearch = (sortArray, input) => {
 
 }
 /***********************************************************************************/
+/**
+ * @module(Array)arrNumber - array of number
+ */
+exports.toSortString = (arrNumber) => {
+    try {
+
+        let value = arrNumber.length;
+        while (value > 0) {
+            let min = arrNumber[0]; //setting first index value as min
+            for (let i = 0; i < arrNumber.length; i++) { //to iterate all the string in the array
+                if (arrNumber[i] > arrNumber[i + 1]) { //checking which string is greater
+                    min = arrNumber[i + 1];
+                    arrNumber[i + 1] = arrNumber[i]; //swapping
+                    arrNumber[i] = min; //swapping
+                    console.log('swapping ' + arrNumber[i] + ' and ' + arrNumber[i + 1]);
+                }
+            }
+            value--;
+        }
+
+        console.log('after bubbleSort ' + arrNumber); //after bubble sort
+
+
+    } catch (error) {
+        console.log(error);
+
+    }
+}
+/**************************************************************************************/
+/**
+ * @module(Array)arr - array of strings
+ */
+exports.toInsertionSort = (arr) => {
+    try {
+        console.log('before insertion sort ' + arr);
+        let value = Math.floor(arr.length / 2); //for looping length by 2 times
+        while (value > 0) {
+            for (let i = 0; i < arr.length; i++) { //to move from first index to last index
+                let min = arr[0]; //tempory min value
+                if (arr[i] > arr[i + 1]) { //check string is bigger or smaller
+                    min = arr[i + 1];
+                    arr[i + 1] = arr[i]; //swapping
+                    arr[i] = min; //swapping
+
+                }
+            }
+            for (let i = arr.length - 1; i >= 0; i--) { //to move from last index to first index
+                let min = arr[arr.length - 1];
+                if (arr[i] < arr[i - 1]) {
+                    min = arr[i - 1];
+                    arr[i - 1] = arr[i];
+                    arr[i] = min;
+                }
+            }
+            value--;
+        }
+        console.log('After insertion sort ' + arr);
+    } catch (error) {
+        console.log(error);
+
+    }
+
+}
+/****************************************************************************/
+/**
+ * @module mergeSort
+ * @param {Array} arr - array of numbers
+ */
+exports.mergeSort = (arr) => {
+    /**
+     * dividing.
+     *
+     * @param	mixed	arr	
+     * @return	void
+     */
+    function dividing(arr) {
+        if (arr.length < 2) { // checking length of currently passed array is less than 2
+            return arr;
+        } else {
+            let mid = Math.floor(arr.length / 2); //to find middle index of the array
+            let leftArray = arr.slice(0, mid); //from middle to left one array
+            let rightArray = arr.slice(mid, arr.length); //from middle to write one array
+            return conquer(dividing(leftArray), dividing(rightArray)); //using recursion to call the function till the condition fails
+        }
+    }
+    /**
+     * conquer.
+     *
+     * @param	mixed	leftArray 	
+     * @param	mixed	rightArray	
+     * @return	mixed
+     */
+    function conquer(leftArray, rightArray) {
+        let sortedArray = []; //array for storing data
+        while (leftArray.length && rightArray.length) { //looping till letft and right array becomes empty
+            if (leftArray[0] < rightArray[0]) { //comparing values
+                sortedArray.push(leftArray.shift()); //pushing value into array meanwhile deleting current value from left array
+
+            } else {
+                sortedArray.push(rightArray.shift()); //pushing value into array meanwhile deleting current value from right array
+            }
+        }
+        return sortedArray.concat(leftArray.concat(rightArray));//combining left out elements
+    }
+    console.log(dividing(arr));
+
+}
+/****************************************************************************/
+/**
+ * @module stack
+ * @param {Array} expression - user data
+ */
+exports.stack = (expression) => {
+    /**
+     * Stack.
+     */
+    class Stack {
+        constructor() { //to create instance of object
+            this.stack = []; //creating array
+
+        }
+        /**
+         * @param {any} data - data from the expression
+         */
+        push(data) {
+            this.stack.push(data); //for inserting a data into stack
+        }
+        /**
+         * @param {}
+         */
+        pop() {
+            if (this.stack.length === 0) { //to check whether the stack is empty
+                console.log('Stack is empty');
+            } else {
+                return this.stack.pop(); //removing top data from the stack
+            }
+        }
+        /**
+         * @param {}
+         */
+        peek() {
+            return this.stack[this.stack.length - 1]; //to find which data is present at top
+        }
+        /**
+         * @param {}
+         */
+        isEmpty() {
+            return this.stack.length === 0; //to check whether the stack is empty
+        }
+        /**
+         * @param {}
+         */
+        print() { //for printing purpose
+            let string = '';
+            let i = 0;
+            while (i < this.stack.length) {
+                string = string + this.stack[i] + ' ';
+                i++;
+            }
+            console.log(string);
+        }
+    }
+    let stk = new Stack(); //creating object
+    let i = 0;
+    while (i < expression.length) { //looping each and every data present in file 
+        switch (expression[i]) { //these process are done according to my needs
+            case '(':
+                stk.push(expression[i]); //pushing when '(' appears
+                break;
+            case ')':
+                stk.pop(); //pushing when ')' appears
+                break;
+            default:
+                break;
+        }
+        i++;
+    }
+    if (stk.isEmpty()) { //after all the push and pop if the stack is empty means it is balanced else not balanced
+        console.log('Balanced');
+
+    } else {
+        console.log('Not balanced');
+    }
+}
+/*********************************************************************************/

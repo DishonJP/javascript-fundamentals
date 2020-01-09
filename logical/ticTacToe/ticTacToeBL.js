@@ -56,7 +56,7 @@ exports.playingGame = (choose, arr) => {
                                 } else {
                                     console.log('index is occupied');
                                 }
-
+                                
                             }
                         }
                     }
@@ -66,15 +66,15 @@ exports.playingGame = (choose, arr) => {
                 }
                 if ((arr[0][0] === player && arr[0][1] === player && arr[0][2] === player) || (arr[1][0] === player && arr[1][1] === player && arr[1][2] === player) || (arr[2][0] === player && arr[2][1] === player && arr[2][2] === player) || (arr[0][0] === player && arr[1][0] === player && arr[2][0] === player) || (arr[0][1] === player && arr[1][1] === player && arr[2][1] === player) || (arr[0][2] === player && arr[1][2] === player && arr[2][2] === player) || (arr[0][0] === player && arr[1][1] === player && arr[2][2] === player) || (arr[0][2] === player && arr[1][1] === player && arr[2][0] === player)) { //cheching winner by checking horizontally,vertically and diagonally
                     console.log('Player Wins');
-                    displayFinalBoard(arr);//calling displaFinalBoard function
+                    displayFinalBoard(arr); //calling displaFinalBoard function
                     break;
 
-                } else if (count == 9) {//board is full but none wins
+                } else if (count == 9) { //board is full but none wins
                     console.log('draw');
                     break;
                 }
                 while (true) {
-                    let computerIndex = Math.round(Math.random() * (9 - 1) + 1);//generating random vakue between 1 to 9
+                    let computerIndex = Math.round(Math.random() * (9 - 1) + 1); //generating random vakue between 1 to 9
                     console.log('Computer turn');
                     let a = 0;
                     for (let i = 0; i < arr.length; i++) {
@@ -117,7 +117,7 @@ exports.playingGame = (choose, arr) => {
             for (let i = 0; i < arr.length; i++) {
                 let display = '';
                 for (let j = 0; j < arr.length; j++) {
-                    if (arr[i][j] === '' || arr[i][j] === undefined || arr[i][j] === null) {//helps to display in organised manner
+                    if (arr[i][j] === '' || arr[i][j] === undefined || arr[i][j] === null) { //helps to display in organised manner
                         display = display + '   ';
                     } else {
                         display = display + arr[i][j] + '  ';

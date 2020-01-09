@@ -6,8 +6,7 @@ exports.mergeSort = (arr) => {
     /**
      * dividing.
      *
-     * @param	mixed	arr	
-     * @return	void
+     * @param	(mixed)	arr	
      */
     function dividing(arr) {
         if (arr.length < 2) { // checking length of currently passed array is less than 2
@@ -36,7 +35,7 @@ exports.mergeSort = (arr) => {
                 sortedArray.push(rightArray.shift()); //pushing value into array meanwhile deleting current value from right array
             }
         }
-        return sortedArray.concat(leftArray.concat(rightArray));//combining left out elements
+        return sortedArray.concat(leftArray.concat(rightArray)); //combining left out elements
     }
     console.log(dividing(arr));
 
