@@ -1,54 +1,70 @@
 exports.linkedList = () => {
+    /**
+     * Node.
+     */
     class Node {
+        /**
+         * 
+         * @param {number} data 
+         */
         constructor(data) {
             this.data = data;
             this.next = null;
         }
     }
+    /**
+     * LinkedList.
+     */
     class LinkedList {
+        /**
+         *@param {}
+         */
         constructor() {
             this.head = null;
         }
+        /**
+         * @param {number} data
+         */
         push(data) {
-            let node = new Node(data);
+            let node = new Node(data); //creating new node
             if (this.head === null) {
-                this.head = node;
+                this.head = node; //setting head node
             } else {
-                let current = this.head;
-                while (current.next !== null) {
+                let current = this.head; //taking temp variable to make our head unchanged
+                while (current.next !== null) { //to go to free node
                     current = current.next;
                 }
-                current.next = node;
+                current.next = node; //linking previous node with current node
             }
         }
         pop() {
-            if (this.head === null) {
+            if (this.head === null) { //stack is empty
                 console.log('no data to pop');
             }
-            if (this.head.next === null) {
-                let data = this.head.data;
-                this.head = null;
-                return data;
+            if (this.head.next === null) { //only head node is present in stack
+                let data = this.head.data; //storing data in a variable
+                this.head = null; //derefering poped node
+                return data; //returning data
             } else {
                 let current = this.head;
-                let prev = null;
+                let prev = null; //for holding previous node address
                 while (current.next !== null) {
                     prev = current;
                     current = current.next;
                 }
                 let data = current.data;
-                prev.next = null;
+                prev.next = null; //dereferring deleted node
                 return data;
             }
         }
-        peek() {
+        peek() { //to find the data present on top
             let current = this.head;
             while (current.next !== null) {
                 current = current.next;
             }
             return current.data;
         }
-        display() {
+        display() { //to display the data present in the Stack
             let string = '';
             let current = this.head;
             while (current.next !== null) {
@@ -59,7 +75,7 @@ exports.linkedList = () => {
 
         }
     }
-    let ll = new LinkedList();
+    let ll = new LinkedList(); //creating object for LinkedList
 
     function isPrime(index) { // to find prime no
         let i = 2;
@@ -117,11 +133,11 @@ exports.linkedList = () => {
             if (i !== j) {
                 let result = toFindAnagram(ar[i].toString(), ar[j].toString()); //calling function and converting number to string
                 if (result) {
-                    ll.push(ar[i]);
+                    ll.push(ar[i]); //calling method of LinkedList
                     break;
                 }
             }
         }
     }
-    ll.display();
+    ll.display(); //calling method of LinkedList
 }
