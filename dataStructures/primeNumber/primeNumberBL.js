@@ -34,7 +34,12 @@ exports.toFindPrime = (arr) => {
             k++;
         }
     }
-    console.log(arr[0]);
+    console.log('Prime no');
+    console.log(arr);
+    let array = new Array(2);
+    for (let i = 0; i < array.length; i++) {
+        array[i] = new Array(); //creating 2D array
+    }
     let ar = [];
     for (let i = 2; i <= 1000; i++) {
         let result = isPrime(i);
@@ -42,37 +47,45 @@ exports.toFindPrime = (arr) => {
             ar.push(i); //storing only prime no
         }
     }
-
-
     for (let i = 0; i < ar.length; i++) {
-        for (let j = i + 1; j < ar.length; j++) {
-            let result = toFindAnagram(ar[i].toString(), ar[j].toString());
-            if (result) {
-                console.log(ar[i], ar[j]);
-                //console.log(toString(ar[i]));
+        let a = 0;
+        for (let j = 0; j < ar.length; j++) {
+            if (i !== j) {
+                let result = toFindAnagram(ar[i].toString(), ar[j].toString()); //calling function and converting number to string
+                if (result) {
+                    array[0].push(ar[i]); //pushing only anagram values
+                    a++; //for print non anagram values
+                    break; //to avoid duplicate values
+                }
             }
         }
-
+        if (a === 0) {
+            array[1].push(ar[i]); //pushing non anagram values
+        }
     }
-
-
-
+    console.log('Anagram');
+    console.log(array);
+    /**
+     * 
+     * @param {String} string1 
+     * @param {String} string2 
+     */
     function toFindAnagram(string1, string2) {
         try {
-            string1 = string1.split('');
+            string1 = string1.split(''); //spliting to char
             string2 = string2.split('');
-            if (string1.length === string2.length) {
+            if (string1.length === string2.length) { //check lenght of both strings
                 let count = 0;
                 for (let i = 0; i < string1.length; i++) {
                     for (let j = 0; j < string2.length; j++) {
-                        if (string1[i] === string2[j]) {
-                            string2[j] = undefined;
-                            string1[i] = null;
-                            count++;
+                        if (string1[i] === string2[j]) { //checking char by char
+                            string2[j] = undefined; //to avoid dupication
+                            string1[i] = null; //to avoid dupication
+                            count++; //for finding anagram
                         }
                     }
                 }
-                if (count === string1.length) {
+                if (count === string1.length) {//checking anagram
                     return true;
                 } else {
                     return false;
@@ -83,8 +96,6 @@ exports.toFindPrime = (arr) => {
             }
         } catch (error) {
             console.log(error);
-
         }
-
     }
 }
