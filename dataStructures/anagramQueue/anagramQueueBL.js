@@ -1,25 +1,42 @@
+/**
+ * @module linkedList
+ */
 exports.linkedList = () => {
+    /**
+     * Node.
+     */
     class Node {
+        /**
+         * 
+         * @param {number} data 
+         */
         constructor(data) {
             this.data = data;
             this.next = null;
         }
     }
+    /**
+     * LinkedList.
+     */
     class LinkedList {
         constructor() {
-            this.head = null;
+            this.head = null; //helps to store head value
         }
+        /**
+         * 
+         * @param {number} data 
+         */
         enqueue(data) {
-            let node = new Node(data);
+            let node = new Node(data); //creating new node 
             if (this.head === null) {
-                this.head = node;
+                this.head = node; //setting head
             } else {
-                let current = this.head;
-                this.head = node;
-                this.head.next = current;
+                let current = this.head; //storing old head in tempory variable
+                this.head = node; //setting new node as current head
+                this.head.next = current; //connecting old head with new head
             }
         }
-        display() {
+        display() { //for display purpose
             let string = '';
             let current = this.head;
             while (current.next !== null) {
@@ -29,8 +46,11 @@ exports.linkedList = () => {
             console.log(string + current.data);
         }
     }
-    let ll = new LinkedList();
-
+    let ll = new LinkedList(); //creating object for linked list
+    /**
+     * 
+     * @param {number} index 
+     */
     function isPrime(index) { // to find prime no
         let i = 2;
         while (i <= index / 2) {
@@ -81,7 +101,7 @@ exports.linkedList = () => {
             ar.push(i); //storing only prime no
         }
     }
-    for (let i = ar.length - 1; i >= 0; i--) {
+    for (let i = 0; i < ar.length; i++) {
         let a = 0;
         for (let j = 0; j < ar.length; j++) {
             if (i !== j) {
