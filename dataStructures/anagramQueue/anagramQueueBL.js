@@ -16,19 +16,17 @@ exports.linkedList = () => {
             } else {
                 let current = this.head;
                 this.head = node;
-                while (current.next !== null) {
-                    current.next = current;
-                }
+                this.head.next = current;
             }
         }
         display() {
             let string = '';
             let current = this.head;
             while (current.next !== null) {
-                string = string + current.data;
+                string = string + current.data + ' ';
                 current = current.next;
             }
-            console.log(string + this.head.data);
+            console.log(string + current.data);
 
         }
     }
@@ -38,5 +36,8 @@ exports.linkedList = () => {
     ll.enqueue('poi');
     ll.enqueue('moi');
     ll.enqueue('llpo');
+    ll.enqueue('happi');
+    console.log(ll);
+
     ll.display();
 }
