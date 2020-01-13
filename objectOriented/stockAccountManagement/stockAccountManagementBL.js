@@ -17,7 +17,10 @@ exports.stockAccountManagement = (data) => {
             this.stockName = stockName;
             this.sharePrice = sharePrice;
             this.noOfShare = noOfShare;
-            this.totalShare = sharePrice * noOfShare;
+            this.totalShare = this.totalShare();
+        }
+        totalShare() {
+            return this.sharePrice * this.noOfShare;
         }
     }
     let allStock = []; //creating empty array
