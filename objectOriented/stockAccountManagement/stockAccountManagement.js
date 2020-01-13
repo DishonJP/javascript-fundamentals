@@ -1,2 +1,4 @@
 const access = require('./stockAccountManagementBL');
-access.stockAccountManagement();
+const fs = require('fs');
+let pkg = JSON.parse(fs.readFileSync('./stock.json'));
+access.stockAccountManagement(pkg);
