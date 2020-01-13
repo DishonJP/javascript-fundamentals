@@ -1,14 +1,16 @@
+/**
+ * @module deckOfCards
+ */
 exports.deckOfCards = () => {
-    let cards = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
+    let cards = ['Clubs', 'Diamonds', 'Hearts', 'Spades']; //creating 2d array
     for (let i = 0; i < cards.length; i++) {
         cards[i] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
     }
-    console.log(cards);
-    let deckOfCards = [];
+    let deckOfCards = []; //creating a empty array for later use
     for (let i = 0; i < cards.length; i++) {
         for (let j = 0; j < cards[i].length; j++) {
             if (i === 0) {
-                deckOfCards.push('Club ' + cards[i][j]);
+                deckOfCards.push('Club ' + cards[i][j]); //pushing the data into newly created array
             }
             if (i === 1) {
                 deckOfCards.push('Diamond ' + cards[i][j]);
@@ -21,28 +23,31 @@ exports.deckOfCards = () => {
             }
         }
     }
-    let arr = [];
+    let arr = []; //for storing unique random values
     let i = 0;
     while (true) {
-        let randomValue = Math.floor(Math.random() * 52);
-        let result = checkingDuplicate(randomValue);
+        let randomValue = Math.floor(Math.random() * 52); //to generate random value from 0-51
+        let result = checkingDuplicate(randomValue); //calling function
         if (result) {
-            arr.push(randomValue);
+            arr.push(randomValue); //pushing data into array
         }
-        if (arr.length === 52) {
+        if (arr.length === 52) { //when the length reaches 52 i am breaking the loop
             break;
         }
     }
-
+    /**
+     * 
+     * @param {number} i 
+     */
     function checkingDuplicate(i) {
         for (let j = 0; j < arr.length; j++) {
-            if (i === arr[j]) {
+            if (i === arr[j]) { //to find duplicate values
                 return false;
             }
         }
         return true;
     }
-    let players = [
+    let players = [ //empty 2D array
         [],
         [],
         [],
@@ -51,13 +56,15 @@ exports.deckOfCards = () => {
     let k = 0;
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 9; j++) {
-            players[i][j] = deckOfCards[arr[k]];
+            players[i][j] = deckOfCards[arr[k]]; //getting index from one array and data from another array and pushing it to 2D array
             k++;
         }
     }
-
-    function display(players) {
-        let string = '';
+    /**
+     * 
+     * @param {Array} players 
+     */
+    function display(players) { //helps to display in good way
         for (let i = 0; i < 4; i++) {
             for (let j = 0; j < 9; j++) {
 
@@ -100,5 +107,6 @@ exports.deckOfCards = () => {
             }
         }
     }
-    display(players);
+    display(players); // calling function
+
 }
