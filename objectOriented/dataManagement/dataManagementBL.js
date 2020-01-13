@@ -23,12 +23,14 @@ exports.dataManagement = (data) => {
         allStock.push(stock); //pushing data into array
         i++;
     }
-    let j = 0;
-    let grandTotal = 0; //to find grand total
-    while (j < allStock.length) {
-        grandTotal += allStock[j].totalAmount; //to find grand total
-        j++;
-    }
-    console.log(allStock);
-    console.log('Grand Total for stock is ' + grandTotal);
+    return JSON.stringify(allStock); //converting to json format
+
+    // let j = 0;
+    // let grandTotal = 0; //to find grand total
+    // while (j < allStock.length) {
+    //     grandTotal += allStock[j].totalAmount; //to find grand total
+    //     j++;
+    // }
+    // console.log(allStock);
+    // console.log('Grand Total for stock is ' + grandTotal);
 }
