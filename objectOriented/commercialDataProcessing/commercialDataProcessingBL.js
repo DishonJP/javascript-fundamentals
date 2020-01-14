@@ -108,4 +108,144 @@ exports.commercialDataProcessing = (data) => {
             break;
         }
     }
+
+
 }
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.size = 0;
+    }
+    add(data) {
+        let node = new Node(data);
+        if (this.head === null) {
+            this.head = node;
+            this.size++;
+            return true;
+        }
+        let current = this.head;
+        while (current.next !== null) {
+            current = current.next;
+        }
+        current.next = node;
+        this.size++;
+        return true;
+    }
+    insertAt(index, data) {
+        if (index < 0 && index > this.size) {
+            return 'index is out of reach';
+        }
+        let node = new Node(data);
+        if (index === 0) {
+            node.next = this.head;
+            this.head = node;
+            this.size++;
+            return true;
+        } else {
+            let current = this.head;
+            let prev = null;
+            let dIndex = 0;
+            while (dIndex < index) {
+                prev = current;
+                current = current.next;
+                dIndex++;
+            }
+            prev.next = node;
+            node.next = current;
+            this.size++;
+            return true;
+        }
+
+    }
+    insertfirst(data) {
+        let node = new Node(data);
+        let current = this.head;
+        this.head = node;
+        this.head.next = current;
+        this.size++;
+        return true;
+    }
+    deleteFirst() {
+        let hed = this.head.next;
+        let data = this.head.data;
+        this.head = hed;
+        this.size--;
+        return data;
+    }
+    deleteLast() {
+        let current = this.head;
+        let prev = null;
+        while (current.next !== null) {
+            prev = current;
+            current = current.next;
+        }
+        let data = current.data;
+        prev.next = null;
+        this.size--;
+        return data;
+    }
+    deleteElement(data) {
+        let current = this.head;
+        let prev = null;
+        while (current !== null) {
+            if (current.data === data) {
+                if (prev === null) {
+                    this.head = current.next;
+                    this.size--;
+                } else {
+                    prev.next = current.next;
+                    this.size--;
+                }
+                return current.data;
+            }
+            prev = current;
+            current = current.next;
+        }
+        return 'mentioned data is not present in linked list';
+    }
+    deleteByindex(index) {
+        if (index < 0 && index > this.size) {
+            return 'enter index is not present in the list';
+        } else {
+            let ind = 0;
+            let prev = null;
+            let current = this.head;
+            while (ind < index) {
+                prev = current;
+                current = current.next;
+                ind++;
+            }
+            prev.next = current.next;
+            return current.data;
+        }
+    }
+    display() {
+        let current = this.head;
+        let string = '';
+        while (current !== null) {
+            string += current.data + ' ';
+            current = current.next;
+        }
+        console.log(string);
+
+    }
+}
+let ll = new LinkedList();
+ll.add('oh');
+ll.add('my');
+ll.add('gosh!!');
+ll.insertAt(2, 'hi');
+ll.insertfirst('dishon');
+ll.insertfirst('ajith');
+console.log(ll.deleteFirst());
+console.log(ll.deleteLast());
+ll.display();
+console.log(ll.deleteByindex(2));
+ll.display();
+//console.log(ll);
