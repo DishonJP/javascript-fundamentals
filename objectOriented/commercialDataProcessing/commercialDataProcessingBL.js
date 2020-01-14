@@ -1,3 +1,4 @@
+const fs = require('fs-sync');
 const readline = require('readline-sync');
 exports.commercialDataProcessing = (data) => {
     class StockAccount {
@@ -49,6 +50,10 @@ exports.commercialDataProcessing = (data) => {
 
             }
         }
+        save() {
+            let details = `Account name is ${this.accountName} and have balance of ${this.amount}`;
+            fs.write('./AccountDetails.txt', details);
+        }
     }
     let depositAmount = readline.questionInt('Enter the amount due you like to deposit to your account : ');
     let stock = new StockAccount(data, depositAmount);
@@ -78,7 +83,7 @@ exports.commercialDataProcessing = (data) => {
                 stock.valueOf();
                 break;
             case 'save':
-                stock.buy();
+                stock.save();
                 break;
             case 'print':
                 stock.buy();
