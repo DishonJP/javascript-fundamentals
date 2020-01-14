@@ -54,6 +54,9 @@ exports.commercialDataProcessing = (data) => {
             let details = `Account name is ${this.accountName} and have balance of ${this.amount}`;
             fs.write('./AccountDetails.txt', details);
         }
+        // print() {
+        //     console.log(`Account holdername is ${this.accountName}, he got ${this.shares.length} shares and those ${this.shares.length} shares are ${this.shares.shareName} and prices are ${this.shares.shareName} and he got total balance of ${this.amount}`);
+        // }
     }
     let depositAmount = readline.questionInt('Enter the amount due you like to deposit to your account : ');
     let stock = new StockAccount(data, depositAmount);
@@ -75,29 +78,34 @@ exports.commercialDataProcessing = (data) => {
                 stock.buy(availableShare);
                 break;
             case 'sell':
-                let sellingShareName = readline.question('Enter the share name due u like to sell : ');
-                let sellingAmount = readline.questionInt('Enter the amount due you like to sell : ');
-                stock.sell(sellingShareName, sellingAmount);
-                break;
-            case 'value':
-                stock.valueOf();
-                break;
-            case 'save':
-                stock.save();
-                break;
-            case 'print':
-                stock.buy();
-                break;
-            case 'exit':
-                a++;
-                break;
-            default:
-                console.log('invalid input');
-                break;
+                if (stock.shares.length === 0) {
+                    console.log('no shares to sell');
+                    break;
+                } else {
+                    let sellingShareName = readline.question('Enter the share name due u like to sell : ');
+                    let sellingAmount = readline.questionInt('Enter the amount due you like to sell : ');
+                    stock.sell(sellingShareName, sellingAmount);
+                    break;
+                }
+
+                case 'value':
+                    stock.valueOf();
+                    break;
+                case 'save':
+                    stock.save();
+                    break;
+                case 'print':
+                    console.log(stock);
+                    break;
+                case 'exit':
+                    a++;
+                    break;
+                default:
+                    console.log('invalid input');
+                    break;
         }
         if (a !== 0) {
             break;
         }
     }
-    console.log(stock);
 }
