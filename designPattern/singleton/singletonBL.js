@@ -1,19 +1,29 @@
+/**
+ * @module singleton
+ */
 exports.singleton = () => {
+    /**
+     * .Singleton
+     */
     class Singleton {
-        constructor(name = "") {
-            if (Singleton.instance) {
-                return Singleton.instance;
+        /**
+         * 
+         * @param {String} name 
+         */
+        constructor(name) {
+            if (Singleton.instance) { //to check whether the instance is already created
+                return Singleton.instance; //if already created returning the same instance
             }
-            Singleton.instance = this;
+            Singleton.instance = this; //setting instance
             this.name = name;
-            return this;
+            return this; //returning data
         }
         getName() {
-            return this.name;
+            return this.name; //return data
         }
     }
-    let single = new Singleton('Dishon');
-    console.log(single.getName());
-    let double = new Singleton('Ajith');
-    console.log(double.getName());
+    let single = new Singleton('Dishon'); //creating new instance
+    console.log(single.getName()); //calling method
+    let double = new Singleton('Ajith'); //creating new instance
+    console.log(double.getName()); //calling method
 }
