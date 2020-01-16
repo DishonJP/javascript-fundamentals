@@ -1,43 +1,51 @@
 exports.factory = (data) => {
-    class How {
+    /**
+     * .PC
+     */
+    class PC {
         display() {
-            console.log('How');
+            console.log('Personal Computer');
             return this;
         }
     }
-    class Could {
+    /**
+     * .Laptop
+     */
+    class Laptop {
         display() {
-            console.log('Could');
+            console.log('Laptop');
             return this;
         }
     }
-    class This {
+    /**
+     * .ServerComputer
+     */
+    class ServerComputer {
         display() {
-            console.log('This');
+            console.log('Server Computer');
             return this;
         }
     }
-    class Happen {
-        display() {
-            console.log('Happen');
-            return this;
-        }
-    }
-    class Factory {
+    /**
+     * .ComputerFactory
+     */
+    class ComputerFactory {
+        /**
+         * 
+         * @param {string} data 
+         */
         creatingInstance(data) {
-            if (data.toLowerCase() === 'how') {
-                return new How();
-            } else if (data.toLowerCase() === 'could') {
-                return new Could();
-            } else if (data.toLowerCase() === 'this') {
-                return new This();
-            } else if (data.toLowerCase() === 'happen') {
-                return new Happen();
+            if (data.toLowerCase() === 'pc') {
+                return new PC(); //creating instance
+            } else if (data.toLowerCase() === 'laptop') {
+                return new Laptop(); //creating instance
+            } else if (data.toLowerCase() === 'server') {
+                return new ServerComputer(); //creating instance
             } else {
                 console.log('No such class is present');
             }
         }
     }
-    let factory = new Factory();
-    factory.creatingInstance(data).display();
+    let factory = new ComputerFactory(); //creating instance
+    factory.creatingInstance(data).display(); //function chaining
 }
