@@ -12,5 +12,11 @@
  * */
 const access = require('./dataManagementBL');
 const fs = require('fs');
-let data = JSON.parse(fs.readFileSync('./details.json'));
-fs.writeFileSync('./updatedDetails.json', access.dataManagement(data));
+fs.readFile('./details.json', function (err, data) {
+    if (err) {
+        console.log(err);
+    } else {
+        let dat = JSON.parse(data);
+        fs.writeFileSync('./updatedDetails.json', access.dataManagement(dat));
+    }
+});
