@@ -13,6 +13,12 @@
  * */
 const access = require('./unOrderedListBL');
 let fs = require('fs');
-let content = fs.readFileSync('happen.txt', 'utf8');
+let content = fs.readFileSync('unOrderedList.txt', 'utf8', function (err, data) {
+    if (err) {
+        console.log(err);
+    } else {
+        return data;
+    }
+});
 let splitContent = content.split(' ');
 access.unOrderedList(splitContent);
