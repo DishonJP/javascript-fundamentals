@@ -3,7 +3,7 @@ let assert = require('chai').assert;
 let power = access.powerOf2(2);
 
 describe('Positive', function () {
-    it('check leap year', function () {
+    it('checking power', function () {
         assert.equal(power,4)
     })
 })
